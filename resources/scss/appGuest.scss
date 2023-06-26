@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/bootstrap';
+
+header{
+    height: 60px;
+    color: black;
+    background-color: #F2EEEB;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sc-card-text{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* start showing ellipsis when 3rd line is reached */
+    white-space: pre-wrap; /* let the text wrap preserving spaces */
+}
+
+.btn-link{
+    text-decoration: none;
+    color: black
+}
