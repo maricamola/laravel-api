@@ -10,8 +10,10 @@ class ProjectController extends Controller
 {
     public function index(){
 
+        // Prendiamo tutti i progetti con il metodo 'all()'
         $projects = Project::all();
 
+        // Stampiamo i dati in un file json
         return response()->json($projects);
 
     }
