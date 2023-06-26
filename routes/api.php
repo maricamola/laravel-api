@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProjectController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +25,23 @@ Route::get('/prova' , function(){
 
     return response()->json($user);
 });
+
+
+Route::namespace('Api')
+        ->prefix('projects')
+        ->group(function(){
+            Route::get('/',[ProjectController::class, 'index']);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+

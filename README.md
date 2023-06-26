@@ -4,7 +4,7 @@
 ------
 **Descrizione**
 
-Nuovo progetto usando laravel breeze ed il pacchetto Laravel 9 Preset con autenticazione.
+Nuovo progetto usando laravel breeze per chiamata API.
 
 **Se si vuole clonare la repository i comandi da eseguire per il corretto funzionamento sono;**
 - Duplicare e rinominare il file .env
@@ -18,9 +18,15 @@ Nuovo progetto usando laravel breeze ed il pacchetto Laravel 9 Preset con autent
 ---------
 **TODO:**
 
-1. Clona la repo ed eseguiti tutti i comandi sopra riportati, procedere con la creazione del Controller
+1. Clona la repo ed eseguiti tutti i comandi sopra riportati, procediamo con la creazione del Controller
 
 (php artisan make:controller Api/ProjectController)
+
+2. Nel controller prendiamo tutti i progetti con il metodo 'All()'
+
+3. Con **->json** gli diciamo di stampare tutti i dati in un json
+
+4. Verifichiamo con Tunder Client che dati vengano presi correttamente
 
 
 
