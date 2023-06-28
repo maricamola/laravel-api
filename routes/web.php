@@ -38,3 +38,7 @@ Route::middleware(['auth' , 'verified'])
         });
 
 require __DIR__.'/auth.php';
+
+// Route::get('{any?}',function(){
+//     return view('guest.home');
+// })->where('any','.*')->name('home');
