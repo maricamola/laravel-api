@@ -1,4 +1,4 @@
-<?php
+// <?php
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Migrations\Migration;
@@ -33,7 +33,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            //Elimino la FK
+            //Elimino la FK (per fargli capire che voglio la FK di quella colonna, la passo tra quadre)
             $table->dropForeign(['category_id']);
 
             //Elimino la colonna

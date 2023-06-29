@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Category;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,11 +37,12 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         $title = 'Creazione nuovo progetto';
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
-        return view('admin.projects.create-edit', compact('title','method','route','project'));
+        return view('admin.projects.create-edit', compact('title','method','route','project', 'categories'));
     }
 
     /**
@@ -95,10 +97,11 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $categories = Category::all();
         $title= "Modifica di: " . $project->title;
         $method= 'PUT';
         $route= route('admin.projects.update' , $project);
-        return view('admin.projects.create-edit', compact('title','method','route', 'project'));
+        return view('admin.projects.create-edit', compact('title','method','route', 'project', 'categories'));
     }
 
     /**

@@ -20,9 +20,9 @@ class ProjectsTableSeeder extends Seeder
         for($i = 0; $i < 100; $i++){
 
         $new_project =  New Project();
+        $new_project->category_id = Category::inRandomOrder()->first()->id;
         $new_project->title = $faker->sentence();
         $new_project->slug = Project::generateSlug($new_project->title);
-        // $new_project->type = $project['type'];
         $new_project->thumb = $faker->imageUrl($width = 640, $height = 480, $category = 'abstract', $randomize = true, $word = null);
         $new_project->date_creation = date('Y-m-d');
         $new_project->description = $faker->text(1000);

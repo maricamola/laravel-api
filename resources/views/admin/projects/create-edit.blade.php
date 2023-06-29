@@ -33,16 +33,18 @@
             @enderror
         </div>
 
-        {{-- <div class="mb-3">
-            <label for="text" class="form-label">Tipologia</label>
-            <input
-            class="form-control"
-            id="type"
-            value="{{ old('type') }}"
-            type="text"
-            name="type"
-            placeholder="Tipologia">
-        </div> --}}
+        <div class="mb-3">
+            <label for="title" class="form-label">Tipologia</label>
+            <select class="form-select" name="category_id">
+                <option selected>Seleziona Tipologia</option>
+                @foreach ($categories as $category)
+                <option
+                value="{{ $category->id }}"
+                @if ($category->id == old('category_id')) selected @endif
+                >{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
         <div class="mb-3">
             <label for="text" class="form-label">Data di creazione</label>
@@ -80,10 +82,7 @@
             <img width="150" id="prev-image" src="" onerror="this.src='/img/image-placeholder.jpg'">
         </div>
 
-
-
         <button type="submit" class="btn btn-success">Invia</button>
-
 
     </form>
 

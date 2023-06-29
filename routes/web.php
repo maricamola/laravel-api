@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -34,6 +36,7 @@ Route::middleware(['auth' , 'verified'])
             Route::get('/stats', [DashboardController::class, 'stats'])->name('stats');
             Route::get('/contacts', [DashboardController::class, 'contacts'])->name('contacts');
             Route::resource('projects', ProjectController::class);
+            Route::resource('categories', CategoryController::class);
             Route::get('orderby/{direction}', [ProjectController::class, 'orderby'])->name('orderby');
         });
 
