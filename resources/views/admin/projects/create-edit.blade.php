@@ -47,6 +47,35 @@
         </div>
 
         <div class="mb-3">
+            <p  class="form-label">Tecnologie</p>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                    @foreach ($technologies as $technology)
+                        <input
+                            id="technology{{ $loop->iteration }}"
+                            class="btn-check"
+                            autocomplete="off"
+                            type="checkbox"
+                            value="{{ $technology->id }}"
+                            name="technologies[]"
+
+                            @if (!$errors->any() && $project?->technologies->contains($technology))
+                                checked
+                            @elseif ($errors->any() && in_array($technology->id, old('technologies',[])))
+                                checked
+                            @endif
+                        >
+                        <label class="btn btn-check-custom" for="technology{{ $loop->iteration }}">{{ $technology->name }}</label>
+                    @endforeach
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mb-3">
             <label for="text" class="form-label">Data di creazione</label>
             <input
             class="form-control"
@@ -79,7 +108,9 @@
             class="form-control mb-3"
             name="thumb"
             type="file">
-            <img width="150" id="prev-image" src="" onerror="this.src='/img/image-placeholder.jpg'">
+            <img width="150" id="prev-image" src="{{ asset('storage/' . $project?->thumb) }}" onerror="this.src='/img/image-placeholder.jpg'">
+
+            <input type="radio" name="noImage" onchange="removeImage()"> <label for="">No image</label>
         </div>
 
         <button type="submit" class="btn btn-success">Invia</button>
@@ -102,6 +133,5 @@
     }
 
 </script>
-
 
 @endsection

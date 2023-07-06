@@ -19,7 +19,7 @@
             <th scope="col"><a href="{{ route('admin.orderby', ['direction'=> $direction]) }}">#ID</a></th>
             <th scope="col">Titolo progetto</th>
             <th scope="col">Tipologia</th>
-            <th scope="col">Technology</th>
+            <th scope="col">Tecnologie</th>
             <th scope="col">Data di creazione</th>
             <th scope="col">Azioni</th>
             </tr>
@@ -37,7 +37,7 @@
                     @forelse ($project->technologies as $technology)
                         <span class="badge text-bg-warning">{{ $technology->name }}</span>
                     @empty
-                        <span>No technologies</span>
+                        <span>Nessuna tecnologia</span>
                     @endforelse
 
                 </td>
@@ -50,7 +50,12 @@
                     <a href="{{ route('admin.projects.show' , $project) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                     <a href="{{ route('admin.projects.edit' , $project) }}" class="btn btn-warning"><i class="fa-solid fa-pen"></i></a>
 
-                    @include('admin.partials.form-delete')
+                    @include('admin.partials.form-delete',[
+                        'title'=>'Eliminazione Post',
+                        'id'=> $project->id,
+                        'message'=> "Confermi l'eliminazione del post $project->title?",
+                        'route' => route('admin.projects.destroy', $project)
+                    ])
                 </td>
             </tr>
             @endforeach

@@ -5,12 +5,12 @@
 <div class="container p-5">
         <div class="d-flex align-items-center">
             <h1 class="me-4">{{ $project->title}}</h1>
-
+            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
             @include('admin.partials.form-delete',[
                 'title'=>'Eliminazione Progetto',
                 'id'=> $project->id,
-                'message'=> "Confermi l'eliminazione del progetto {{ $project->title }} ?",
-                'route'=> route('admin.projects.destroy', $project)
+                'message'=> "Confermi l'eliminazione del progetto $project->title?",
+                'route'=> route('admin.projects.destroy',$project)
             ])
         </div>
 
@@ -23,16 +23,19 @@
             @forelse ($project->technologies as $technology)
                 <span class="badge text-bg-warning">{{ $technologies->name }}</span>
             @empty
-                <span>No technologies</span>
+            <span>Nessuna tecnologia</span>
             @endforelse
         </div>
 
         <div class="mt-4">
-            <p class="mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, iusto aperiam cum vero inventore ab consectetur explicabo modi non natus quasi totam, ut minima provident, nobis repellat dolore libero itaque. {!! $project->description !!} </p>
+            <p class="mt-1">{!! $project->description !!} </p>
         </div>
 
         <div>
-            <span>Data di creazione: {{ $project->date_creation}}</span>
+            @php
+            $date = date_create($project->date_creation);
+            @endphp
+            <span>Data creazione: {{ date_format($date, 'd/m/Y')}}</span>
         </div>
 
         {{-- Immagine qui!!!! --}}
